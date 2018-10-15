@@ -1,2 +1,2 @@
 # DFA1
-WIP
+New implementation using Sets and Maps
