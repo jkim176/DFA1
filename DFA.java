@@ -12,28 +12,31 @@ class DFA {
    private Set<State> states = new HashSet<>();
    private Set<State> acceptStates = new HashSet<>();
    private Transition transitionFunction = new Transition();
-   private State startState = new State("Q0");
-   private String name;
+   private State startState;
+   private String title;
    
    DFA() {
-      states.add(startState);    // initialized with start state Q0 
+ 
    }
    
-   DFA(String name) {
-      states.add(startState);
-      this.name = name;
+   DFA(String title) {
+      this.title = title;
    }
    
-   String getName() {
-      return name;
+   String getTitle() {
+      return title;
    }
    
-   void setName(String name) {
-      this.name = name;
+   void setTitle(String title) {
+      this.title = title;
    }
    
    State getStartState() {
       return startState;
+   }
+   
+   void setStartState(State state) {
+      startState = state;
    }
    
    Set<Character> getAlphabet() {
@@ -89,7 +92,7 @@ class DFA {
    }
    
    void getDFAInfo() {
-      System.out.println("DFA: " + getName());
+      System.out.println("DFA: " + getTitle());
       printAlphabet();
       printStates();
       printAcceptStates();
