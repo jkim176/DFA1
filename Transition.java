@@ -29,7 +29,7 @@ class Transition {
             return target;
          }
       }
-      throw new IllegalArgumentException("No transition found for source: " + source + " char: " + input + "\n");    // if no target is returned, transition does not exist
+      throw new IllegalArgumentException("IAException: No transition found for source: " + source + " char: " + input + "\n");    // if no target is returned, transition does not exist
    }
    
    void printTransition() {
@@ -41,7 +41,7 @@ class Transition {
          for(Map.Entry<State, Character> e: key.entrySet()) {     // for each entry(1) in nested Map...
             State source = e.getKey();
             char input = e.getValue();
-            System.out.print("\tSource State " + source + " --> input " + input + " --> Target State " + target + "\n");
+            System.out.print("\tSource State " + source.getName() + " --> input " + input + " --> Target State " + target.getName() + "\n");
          }       
       }
    }
