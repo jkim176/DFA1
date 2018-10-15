@@ -6,9 +6,8 @@ public class DFAExample_1 {
    public static void main(String[] args) {
    
       Scanner input = new Scanner(System.in);
-      String machine = "0*1*";
       
-      DFA dfa = new DFA();
+      DFA dfa = new DFA("0*1*");
       
       dfa.addAlphabet('0');
       dfa.addAlphabet('1');
@@ -35,13 +34,15 @@ public class DFAExample_1 {
          System.out.println("Enter a string of 0's and 1's: ");
          userString = input.next();
          
+         //dfa.getDFAInfo();
+         
          try {
             boolean acceptance = dfa.solve(userString);
          
             if(acceptance)
-               System.out.println(userString + " is accepted by machine: " + machine);
+               System.out.println(userString + " is accepted by machine: " + dfa.getName());
             else
-               System.out.println(userString + " is rejected by machine: " + machine);
+               System.out.println(userString + " is rejected by machine: " + dfa.getName());
          }
          catch(IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
