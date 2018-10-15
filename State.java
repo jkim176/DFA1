@@ -3,6 +3,10 @@ package MyDFA1;
 class State {
    private String name;
    
+   State() {
+   
+   }
+   
    State(String name) {
       this.name = name;
    }
