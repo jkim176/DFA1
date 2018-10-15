@@ -1,2 +1,2 @@
 # DFA1
-New implementation using Sets and Maps
+Java DFA implementation using Sets and Maps
