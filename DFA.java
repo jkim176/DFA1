@@ -138,7 +138,7 @@ class DFA {
                System.exit(1);
             }
          }
-         // ERROR
+         
          State lastState = sequence.get(sequence.size() - 1);
          if(acceptStates.contains(lastState)) {    // if last state is in accept states, return true
             printSequence(sequence);
