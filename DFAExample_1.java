@@ -35,11 +35,17 @@ public class DFAExample_1 {
          System.out.println("Enter a string of 0's and 1's: ");
          userString = input.next();
          
-         boolean acceptance = dfa.solve(userString);
-         if(acceptance)
-            System.out.println(userString + " is accepted by machine: " + machine);
-         else
-            System.out.println(userString + " is rejected by machine: " + machine);
+         try {
+            boolean acceptance = dfa.solve(userString);
+         
+            if(acceptance)
+               System.out.println(userString + " is accepted by machine: " + machine);
+            else
+               System.out.println(userString + " is rejected by machine: " + machine);
+         }
+         catch(IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+         }
          
          System.out.println("To restart, press any key.  To exit, enter 0.");
          String restartString = input.next();
