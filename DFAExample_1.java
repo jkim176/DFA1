@@ -12,17 +12,21 @@ public class DFAExample_1 {
       dfa.addAlphabet('0');
       dfa.addAlphabet('1');
       
+      State q0 = new State("Q0");
       State q1 = new State("Q1");
       State q2 = new State("Q2");
       
+      dfa.setStartState(q0);
+      
+      dfa.addState(q0);
       dfa.addState(q1);
       dfa.addState(q2);
       
-      dfa.addAcceptState(dfa.getStartState());
+      dfa.addAcceptState(q0);
       dfa.addAcceptState(q1);
       
-      dfa.addTransition(dfa.getStartState(), '0', dfa.getStartState());
-      dfa.addTransition(dfa.getStartState(), '1', q1);
+      dfa.addTransition(q0, '0', q0);
+      dfa.addTransition(q0, '1', q1);
       dfa.addTransition(q1, '0', q2);
       dfa.addTransition(q1, '1', q1);
       dfa.addTransition(q2, '0', q2);
@@ -40,9 +44,9 @@ public class DFAExample_1 {
             boolean acceptance = dfa.solve(userString);
          
             if(acceptance)
-               System.out.println(userString + " is accepted by machine: " + dfa.getName());
+               System.out.println(userString + " is accepted by machine: " + dfa.getTitle());
             else
-               System.out.println(userString + " is rejected by machine: " + dfa.getName());
+               System.out.println(userString + " is rejected by machine: " + dfa.getTitle());
          }
          catch(IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
