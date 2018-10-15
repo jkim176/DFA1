@@ -13,9 +13,23 @@ class DFA {
    private Set<State> acceptStates = new HashSet<>();
    private Transition transitionFunction = new Transition();
    private State startState = new State("Q0");
+   private String name;
    
    DFA() {
       states.add(startState);    // initialized with start state Q0 
+   }
+   
+   DFA(String name) {
+      states.add(startState);
+      this.name = name;
+   }
+   
+   String getName() {
+      return name;
+   }
+   
+   void setName(String name) {
+      this.name = name;
    }
    
    State getStartState() {
@@ -35,6 +49,7 @@ class DFA {
       for(char character: alphabet) {
          System.out.print(character + " ");
       }
+      System.out.println();
    }
    
    Set<State> getStates() {
@@ -50,21 +65,23 @@ class DFA {
       for(State state: states) {
          System.out.print(state.getName() + " ");
       }
+      System.out.println();
    }
    
    Set<State> getAcceptStates() {
-      return states;
+      return acceptStates;
    }
    
    void addAcceptState(State state) {
-      states.add(state);
+      acceptStates.add(state);
    }
    
    void printAcceptStates() {
       System.out.print("Accept States: ");
-      for(State state: states) {
+      for(State state: acceptStates) {
          System.out.print(state.getName() + " ");
       }
+      System.out.println();
    }
    
    void addTransition(State source, char input, State target) {
@@ -72,6 +89,7 @@ class DFA {
    }
    
    void getDFAInfo() {
+      System.out.println("DFA: " + getName());
       printAlphabet();
       printStates();
       printAcceptStates();
@@ -100,10 +118,10 @@ class DFA {
    
    boolean solve(String userString) {     // solve for user string, returns true = accept/ false = reject
       if(!verifyString(userString)) {
-         throw new IllegalArgumentException("String characters not in alphabet. ");
+         throw new IllegalArgumentException("IAException: String characters not in alphabet. ");
       }
       else {
-         ArrayList<State> sequence = new ArrayList<>();
+         ArrayList<State> sequence = new ArrayList<>();     // sequence of states accessed using user string
          State source = startState;
          sequence.add(startState);     // add initial start state to sequence
          
@@ -120,8 +138,7 @@ class DFA {
                System.exit(1);
             }
          }
-         
-         // ERROR: last state of 'state sequence' is never contained in 'accepted states'
+         // ERROR
          State lastState = sequence.get(sequence.size() - 1);
          if(acceptStates.contains(lastState)) {    // if last state is in accept states, return true
             printSequence(sequence);
