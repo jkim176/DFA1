@@ -46,15 +46,15 @@ public class DFAExample_2 {
          System.out.println("Enter a string of 0's and 1's: ");
          userString = input.next();
          
-         dfa.getDFAInfo();
+         //dfa.getDFAInfo();
          
          try {
             boolean acceptance = dfa.solve(userString);
          
             if(acceptance)
-               System.out.println(userString + " is accepted by machine: " + dfa.getTitle());
+               System.out.println(userString + " is accepted by machine: " + dfa.getTitle() + "\n");
             else
-               System.out.println(userString + " is rejected by machine: " + dfa.getTitle());
+               System.out.println(userString + " is rejected by machine: " + dfa.getTitle() + "\n");
          }
          catch(IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
