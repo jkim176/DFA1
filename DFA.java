@@ -136,7 +136,7 @@ class DFA {
                sequence.add(target);      // add target State to sequence
                source = target;     // target State becomes source State, for next iteration
             }
-            catch(IllegalArgumentException ex) {
+            catch(NullPointerException ex) {
                System.out.println(ex.getMessage());
                System.exit(1);
             }
