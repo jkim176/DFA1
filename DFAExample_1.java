@@ -44,9 +44,9 @@ public class DFAExample_1 {
             boolean acceptance = dfa.solve(userString);
          
             if(acceptance)
-               System.out.println(userString + " is accepted by machine: " + dfa.getTitle());
+               System.out.println(userString + " is accepted by machine: " + dfa.getTitle() + "\n");
             else
-               System.out.println(userString + " is rejected by machine: " + dfa.getTitle());
+               System.out.println(userString + " is rejected by machine: " + dfa.getTitle() + "\n");
          }
          catch(IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
